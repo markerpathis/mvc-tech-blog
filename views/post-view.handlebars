@@ -1,0 +1,15 @@
+<p>
+  {{post.title}}
+</p>
+<p>
+  Written by
+  {{post.user.name}}
+  on
+  {{format_date post.date_created}}.
+</p>
+<p>
+  {{post.content}}
+</p>
+
+{{! TODO: Should only be able to view this page when signed in. }}
+{{! TODO: Add text box and option to comment. }}

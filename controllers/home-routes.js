@@ -12,4 +12,22 @@ router.get("/", async (req, res) => {
   res.render("all", { posts });
 });
 
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: User,
+    });
+    console.log("postData: ", postData);
+    if (!postData) {
+      res.status(404).json({ message: "No blog post with this id!" });
+      return;
+    }
+    const post = postData.get({ plain: true });
+    console.log("post: ", post);
+    res.render("post-view", { post });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

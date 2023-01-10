@@ -3,7 +3,7 @@ const session = require("express-session");
 const routes = require("./controllers");
 
 // needed to use the format_date helper
-// const helpers = require("./utils/helpers");
+const helpers = require("./utils/helpers");
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -16,8 +16,9 @@ const PORT = process.env.PORT || 3003;
 // Import express-handlebars
 const exphbs = require("express-handlebars");
 // Set handlebars as the template engine
-// const hbs = exphbs.create({ helpers });
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
+// REMOVE after helper is added
+// const hbs = exphbs.create({});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 /////////////////////////////////////////////////////////

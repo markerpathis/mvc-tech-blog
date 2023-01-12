@@ -12,6 +12,10 @@ router.post("/", async (req, res) => {
     });
 
     req.session.save(() => {
+      // signs in the user automatically after their account is created
+      req.session.logged_in = true;
+      req.session.user_id = dbUserData.id;
+
       res.status(200).json(dbUserData);
     });
   } catch (err) {

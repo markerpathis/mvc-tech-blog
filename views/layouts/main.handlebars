@@ -12,8 +12,8 @@
     <nav>
       <a href="">Homepage</a>
       {{#if logged_in}}
-        <a href="">Dashboard</a> |
-        <a href="">Logout</a>
+        <a href="">Dashboard</a>
+        <a href="" id="logout-link">Logout</a>
       {{else}}
         <a href="/login">Login</a>
       {{/if}}
@@ -21,6 +21,10 @@
     <main>
       {{{body}}}
     </main>
+
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 
 </html>

@@ -1,6 +1,23 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 
+router.post("/", async (req, res) => {
+  try {
+    const dbPostData = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
+    });
+
+    req.session.save(() => {
+      res.status(200).json(dbPostData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {

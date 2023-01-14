@@ -1,6 +1,8 @@
-<p>
-  test dashboard route
-</p>
+<section class="container">
+    {{#each posts as |post|}}
+      {{> post-card}}
+    {{/each}}
+</section>
 
 <div class="post-card">
   <h2 class="">Create a New Blog Post:</h2>

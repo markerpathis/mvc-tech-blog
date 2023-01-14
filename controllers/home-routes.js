@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
     posts,
     //Passes the logged_in flag to the handlebars template
     logged_in: req.session.logged_in,
+    page_current: req.session.page_current,
   });
 });
 

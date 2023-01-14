@@ -12,6 +12,10 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "No blog post with this id!" });
       return;
     }
+    req.session.save(() => {
+      req.session.page_current = postData.id;
+    });
+
     const post = postData.get({ plain: true });
     console.log("post: ", post);
 

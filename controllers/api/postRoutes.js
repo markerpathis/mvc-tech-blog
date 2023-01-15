@@ -92,4 +92,21 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+router.delete("/edit/:id", async (req, res) => {
+  try {
+    const deletedPost = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (deletedPost) {
+      res.status(200).json(deletedPost);
+    } else {
+      res.status(404).json({ message: "No post found with this id" });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

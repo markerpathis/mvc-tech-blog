@@ -53,4 +53,43 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    if (!postData) {
+      res.status(404).json({ message: "No blog post with this id!" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.page_current = postData.id;
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render("post-edit", { post, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const postData = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

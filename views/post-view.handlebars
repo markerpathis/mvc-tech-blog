@@ -1,7 +1,7 @@
 <div>
   <h2>{{post.title}}</h2>
   <p class="text-muted">
-    Written by
+    Posted by
     {{post.user.name}}
     on
     {{format_date post.date_created}}
@@ -27,5 +27,3 @@
 {{/each}}
 
 <script src="/js/comment.js"></script>
-{{! TODO: Should only be able to view this page when signed in. }}
-{{! TODO: Add text box and option to comment. }}

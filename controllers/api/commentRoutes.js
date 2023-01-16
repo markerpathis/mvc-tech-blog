@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Comment, User, Post } = require("../../models");
+const { Comment } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -8,8 +8,6 @@ router.post("/", async (req, res) => {
       user_id: req.session.user_id,
       post_id: req.body.post_id,
     });
-
-    // console.log("dbCommentData: ", dbCommentData);
 
     req.session.save(() => {
       res.status(200).json(dbCommentData);

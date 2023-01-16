@@ -24,18 +24,13 @@ router.get("/:id", withAuth, async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: User,
     });
-    // console.log("postData: ", postData);
 
     if (!postData) {
       res.status(404).json({ message: "No blog post with this id!" });
       return;
     }
-    req.session.save(() => {
-      req.session.page_current = postData.id;
-    });
 
     const post = postData.get({ plain: true });
-    // console.log("post: ", post);
 
     const commentData = await Comment.findAll({
       include: User,
@@ -43,10 +38,8 @@ router.get("/:id", withAuth, async (req, res) => {
         post_id: post.id,
       },
     });
-    // console.log("commentData: ", commentData);
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
-    // console.log("comments: ", comments);
 
     res.render("post-view", { post, comments, logged_in: req.session.logged_in });
   } catch (err) {
@@ -62,9 +55,6 @@ router.get("/edit/:id", async (req, res) => {
       res.status(404).json({ message: "No blog post with this id!" });
       return;
     }
-    req.session.save(() => {
-      req.session.page_current = postData.id;
-    });
 
     const post = postData.get({ plain: true });
 

@@ -11,17 +11,12 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-/////////////////////////////////////////////////////////
-//////////////// HANDLEBARS STARTER PACK ////////////////
 // Import express-handlebars
 const exphbs = require("express-handlebars");
 // Set handlebars as the template engine
 const hbs = exphbs.create({ helpers });
-// REMOVE after helper is added
-// const hbs = exphbs.create({});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-/////////////////////////////////////////////////////////
 
 // Set up sessions with cookies
 const sess = {

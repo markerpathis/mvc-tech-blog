@@ -3,8 +3,6 @@ const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    console.log("REQ: ", req);
-    console.log("REQ BODY: ", req.body);
     const dbUserData = await User.create({
       name: req.body.name,
       email: req.body.email,

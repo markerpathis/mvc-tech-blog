@@ -1,24 +1,23 @@
-<section class="container">
+  <section class="container">
+    <div class="post-card">
+      <h2 class="">Create a New Blog Post:</h2>
+      <form class="post-form">
+        <div class="">
+          <label for="title-post">Title:</label>
+          <input class="form-control" type="text" id="title-post" />
+        </div>
+        <div class="">
+          <label for="content-post">Content:</label>
+          <textarea class="form-control mb-3" type="text" id="content-post"></textarea>
+        </div>
+        <div class="">
+          <button class="btn btn-primary" type="submit">Create Post</button>
+        </div>
+      </form>
+    </div>
+    <h2 class="">Your Previous Blog Posts:</h2>
     {{#each posts as |post|}}
       {{> post-profile-card}}
     {{/each}}
-</section>
-
-<div class="post-card">
-  <h2 class="">Create a New Blog Post:</h2>
-  <form class="post-form">
-    <div class="">
-      <label for="title-post">Title:</label>
-      <input class="" type="text" id="title-post" />
-    </div>
-    <div class="">
-      <label for="content-post">Content:</label>
-      <input class="" type="text" id="content-post" />
-    </div>
-    <div class="">
-      <button class="" type="submit">Create Post</button>
-    </div>
-  </form>
-</div>
-
+  </section>
 <script src="/js/post.js"></script>

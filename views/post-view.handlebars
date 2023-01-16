@@ -1,30 +1,29 @@
-<p>
-  {{post.title}}
-</p>
-<p>
-  Written by
-  {{post.user.name}}
-  on
-  {{format_date post.date_created}}.
-</p>
-<p>
-  {{post.content}}
-</p>
-<div class="">
-  <h2>Comment</h2>
-  <form class="comment-form">
-    <div class="">
-      <label for="comment-post"></label>
-      <input class="" type="text" id="comment-post" />
-    </div>
-    <div class="">
-      <button class="" type="submit">Submit</button>
-    </div>
-  </form>
+<div>
+  <h2>{{post.title}}</h2>
+  <p class="text-muted">
+    Written by
+    {{post.user.name}}
+    on
+    {{format_date post.date_created}}.
+  </p>
+  <p>
+    {{post.content}}
+  </p>
+  <div class="">
+    <h3>Comments</h3>
+    <form class="comment-form">
+      <div class="">
+        <label for="comment-post"></label>
+        <textarea class="form-control mb-3" type="text" id="comment-post"></textarea>
+      </div>
+      <div class="">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
-
 {{#each comments}}
-{{> comment-card}}
+  {{> comment-card}}
 {{/each}}
 
 <script src="/js/comment.js"></script>

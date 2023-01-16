@@ -9,20 +9,30 @@
 
   </head>
   <body>
-    <header>
-      <h1>THIS IS A TECH BLOG...</h1>
+    <header class="py-3">
+      <h1 class="text-center">THIS IS A TECH BLOG...</h1>
     </header>
-    <nav>
-      <a href="/">Homepage</a>
-      <a href="/dashboard">Dashboard</a>
-      {{#if logged_in}}
-        <a href="" id="logout-link">Logout</a>
-      {{else}}
-        <a href="/login">Login</a>
-      {{/if}}
-    </nav>
-    <main>
-      {{{body}}}
+    <div class="nav-scroller py-1 mb-2">
+      <nav class="nav d-flex justify-content-center">
+        <div class="">
+          {{! <a class="navbar-brand">Tech Blog
+          </a> }}
+          <a class="p-2 text-muted" href="/">Homepage</a>
+          <a class="p-2 text-muted" href="/dashboard">Dashboard</a>
+          {{#if logged_in}}
+            <a class="p-2 text-muted" href="" id="logout-link">Logout</a>
+          {{else}}
+            <a class="p-2 text-muted" href="/login">Login</a>
+          {{/if}}
+        </div>
+      </nav>
+    </div>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {{{body}}}
+        </div>
+      </div>
     </main>
 
     {{#if logged_in}}

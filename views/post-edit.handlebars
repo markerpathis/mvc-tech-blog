@@ -1,21 +1,22 @@
 <div class="edit-card">
-  <h2 class="">Edit or Delete Blog Post</h2>
+  <h2 class="">Edit Blog Post:</h2>
   <form class="post-edit-form">
-    <div class="">
+    <div class="mb-3">
       <label for="title-post-edit">Title:</label>
-      <input class="" type="text" id="title-post-edit" value="{{post.title}}" />
+      <input class="form-control" type="text" id="title-post-edit" value="{{post.title}}" />
     </div>
-    <div class="">
+    <div class="mb-3">
       <label for="content-post-edit">Content:</label>
-      <input class="" type="text" id="content-post-edit" value="{{post.content}}" />
+      <textarea class="form-control" type="text" id="content-post-edit">{{post.content}}</textarea>
     </div>
     <div class="">
-      <button class="" type="submit">EDIT</button>
+      <button class="btn btn-primary" type="submit">Save Post</button>
     </div>
   </form>
 </div>
+<h2 class="mb-3">Delete Blog Post:</h2>
 <div class="post-delete">
-  <button class="">DELETE</button>
+  <button class="btn btn-primary">Delete Post</button>
 </div>
 <script src="/js/edit-post.js"></script>
 <script src="/js/delete-post.js"></script>

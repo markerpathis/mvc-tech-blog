@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+// Create a new blog post
 router.post("/", async (req, res) => {
   try {
     const dbPostData = await Post.create({
@@ -19,6 +20,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Route to view a single blog post and renders the post-view handlebars template
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -47,6 +49,7 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+// Route to view a single blog post on the edit page, rendered by the post-edit handlebars template
 router.get("/edit/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
@@ -64,6 +67,7 @@ router.get("/edit/:id", async (req, res) => {
   }
 });
 
+// Route to endit the title and content of a single blog post
 router.put("/edit/:id", async (req, res) => {
   try {
     const postData = await Post.update(
@@ -83,6 +87,7 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+// Route to delete a single blog post (created by the user who is logged in)
 router.delete("/edit/:id", async (req, res) => {
   try {
     const deletedPost = await Post.destroy({

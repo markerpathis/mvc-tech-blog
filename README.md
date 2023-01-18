@@ -31,6 +31,7 @@ Below are links to the deployed web application and the repository on GitHub:
 - https://github.com/markerpathis/mvc-tech-blog
 
 Below is a screenshot of the deployed web application:
+![alt text](/assets/Screen%20Shot%202023-01-17%20at%205.13.13%20PM.png)
 
 ## License
 
